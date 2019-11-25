@@ -1,7 +1,7 @@
 const { ApolloServer, makeExecutableSchema } = require('apollo-server-express');
 const express = require('express');
 const { merge } = require('lodash');
-const { userSchema } = require('./schema');
+const { userSchema, todoSchema } = require('./schema');
 const { userResolver } = require('./resolvers');
 
 
@@ -11,6 +11,7 @@ const app = express();
 
 const typeDefs = [
   userSchema,
+  todoSchema,
 ];
 
 const resolvers = merge(

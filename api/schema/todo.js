@@ -3,25 +3,25 @@ const { gql } = require('apollo-server-express');
 const todoSchema = gql`
     type Todo{
         id: ID!
-        user: [User]!
+        user: User!
         description: String!
-        title: Strin!
+        title: String!
         done: Boolean
     }
 
     input NewTodo {
         id: ID!
-        user: [User]!
+        user: User!
         description: String!
-        title: Strin!
+        title: String!
         done: Boolean
     }
 
     input UpdateTodo {
         id: ID!
-        user: [User]!
+        user: User!
         description: String
-        title: Strin
+        title: String
         done: Boolean
     }
 
