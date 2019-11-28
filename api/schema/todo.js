@@ -7,11 +7,12 @@ const todoSchema = gql`
         description: String!
         title: String!
         done: Boolean
+        createdAt: String
+        updatedAt: String
     }
 
     input NewTodo {
-        id: ID!
-        user: User!
+        user: String!
         description: String!
         title: String!
         done: Boolean
@@ -19,19 +20,20 @@ const todoSchema = gql`
 
     input UpdateTodo {
         id: ID!
-        user: User!
+        user: String!
         description: String
         title: String
         done: Boolean
+        updatedAt: String
     }
 
-    type Query {
-        todo: [Todo]!
+    extend type Query {
+        todos: [Todo]!
     }
 
-    type Mutation {
+    extend type Mutation {
         newTodo(input: NewTodo!): Todo!
-        updateTodo(input: UpdateTodo!): Todo!
+        updateTodo(id: ID! input: UpdateTodo!): Todo!
     }
 `;
 
