@@ -1,3 +1,4 @@
 const userResolver = require('./user');
+const todoResolver = require('./todo');
 
-module.exports = { userResolver };
+module.exports = { userResolver, todoResolver };
