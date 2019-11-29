@@ -2,6 +2,8 @@ const Todo = require('../models/todo');
 
 const todos = () => Todo.find({}).exec();
 
+const todo = (_, { id }) => Todo.findById(id).exec();
+
 const newTodo = (_, { input }) => Todo.create(input);
 
 const updateTodo = (_, { id, input }) => Todo.update(id, input, { new: true }).exec();
@@ -9,6 +11,7 @@ const updateTodo = (_, { id, input }) => Todo.update(id, input, { new: true }).e
 const todoResolvers = {
   Query: {
     todos,
+    todo
   },
 
   Mutation: {
