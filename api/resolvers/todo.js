@@ -2,6 +2,8 @@ const Todo = require('../models/todo');
 
 const todos = () => Todo.find({}).exec();
 
+const todo = (_, { id }) => Todo.findById(id).exec();
+
 const newTodo = (_, { input }) => Todo.create(input);
 
 const updateTodo = (_, { id, input }) => Todo.update(id, input, { new: true }).exec();
@@ -9,6 +11,7 @@ const updateTodo = (_, { id, input }) => Todo.update(id, input, { new: true }).e
 const todoResolvers = {
   Query: {
     todos,
+    todo,
   },
 
   Mutation: {
@@ -18,8 +21,9 @@ const todoResolvers = {
 
   Todo: {
     async user(todoItem) {
-      const letme = await todoItem.populate('user').execPopulate();
-      return letme.user;
+      const user = await todoItem.populate('user').execPopulate();
+      console.log(user);
+      return user.user;
     },
   },
 };

@@ -25,7 +25,7 @@ const userSchema = gql`
 
     type Mutation {
         newUser(input: NewUser!): User!
-        updateUser(input: UpdateUser!): User!
+        updateUser(id: ID!, input: UpdateUser!): User!
     }
 `;
 

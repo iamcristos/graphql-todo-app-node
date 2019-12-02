@@ -26,14 +26,13 @@ const resolvers = merge(
 );
 
 const schema = makeExecutableSchema({
-  typeDefs,
+  typeDefs: [rootSchema, ...typeDefs],
   resolvers,
 });
 const server = new ApolloServer({
   schema,
-  context: ({ req, res }) => ({
+  context: ({ req }) => ({
     req,
-    res,
   }),
 });
 
