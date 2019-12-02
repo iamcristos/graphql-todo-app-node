@@ -11,7 +11,7 @@ const updateTodo = (_, { id, input }) => Todo.update(id, input, { new: true }).e
 const todoResolvers = {
   Query: {
     todos,
-    todo
+    todo,
   },
 
   Mutation: {
@@ -21,8 +21,9 @@ const todoResolvers = {
 
   Todo: {
     async user(todoItem) {
-      const letme = await todoItem.populate('user').execPopulate();
-      return letme.user;
+      const user = await todoItem.populate('user').execPopulate();
+      console.log(user);
+      return user.user;
     },
   },
 };
