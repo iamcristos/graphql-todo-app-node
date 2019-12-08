@@ -5,6 +5,7 @@ const userSchema = gql`
         id: ID!
         username: String!
         email: String!
+        token: String
     }
 
     input NewUser {
@@ -19,8 +20,14 @@ const userSchema = gql`
         email: String
     }
 
+    input LoginUser {
+        username: String!
+        password: String!
+    }
+
     type Query {
         getUsers: [User]!
+        loginUser(input: LoginUser!): User!
     }
 
     type Mutation {

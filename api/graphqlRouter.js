@@ -3,6 +3,7 @@ const express = require('express');
 const { merge } = require('lodash');
 const { userSchema, todoSchema } = require('./schema');
 const { userResolver, todoResolver } = require('./resolvers');
+const { authenticate } = require('./utils/auth');
 
 
 const app = express();
@@ -31,8 +32,9 @@ const schema = makeExecutableSchema({
 });
 const server = new ApolloServer({
   schema,
-  context: ({ req }) => ({
+  context: async ({ req }) => ({
     req,
+    user: await authenticate(req.headers.authorization),
   }),
 });
 
