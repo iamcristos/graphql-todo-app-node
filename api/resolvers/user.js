@@ -3,7 +3,6 @@ const User = require('../models/user');
 const { generateToken } = require('../utils/auth');
 
 const getUsers = () => User.find({}).exec();
-
 const newUser = async (_, { input }) => {
   const user = await User.findOne({ $or: [{ username: input.username, email: input.email }] })
     .exec();
