@@ -20,7 +20,6 @@ const todoSchema = gql`
 
     input UpdateTodo {
         id: ID!
-        user: String!
         description: String
         title: String
         done: Boolean
@@ -35,6 +34,7 @@ const todoSchema = gql`
     extend type Mutation {
         newTodo(input: NewTodo!): Todo!
         updateTodo(id: ID! input: UpdateTodo!): Todo!
+        deleteTodo(id: ID!): Todo!
     }
 `;
 
